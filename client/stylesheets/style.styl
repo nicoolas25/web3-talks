@@ -4,6 +4,7 @@ menu_color = #D0D0D0
 // Mixins
 
 container(bg_color)
+  max-width 600px
   border-radius 5px
   padding 10px
   background-color bg_color
@@ -25,6 +26,9 @@ container(bg_color)
   color menu_color
   cursor pointer
 
+.alert.error
+  container lighten(red, 80%)
+  color darken(red, 30%)
 
 body
   color #202020
@@ -75,7 +79,6 @@ div.talk
 
 form
   container invert(text_color)
-  max-width 500px
 
   legend
     font 120% bold
