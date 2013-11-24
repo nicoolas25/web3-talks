@@ -36,5 +36,43 @@ Meteor.methods
 
     return talk._id
 
-  # This method update and existing talk
-  'talks/update': (talkAttributes) ->
+  # This method updates and existing talk
+  'talks/patch': (talkAttributes) ->
+    userId = Meteor.userId()
+
+    if not userId
+      throw new Meteor.Error(401, 'Vous devez être identifié pour supprimer un talk.')
+
+    realTalk = Talks.findOne(talkAttributes._id)
+
+    if not realTalk
+      throw new Meteor.Error(404, "Le talk n'existe pas.")
+
+    if userId isnt realTalk.userId
+      throw new Meteor.Error(401, "Vous devez être le speaker du talk pour l'annuler.")
+
+    talkUpdates = _.pick(talkAttributes, 'title', 'description')
+
+    Talks.update(talkAttributes._id, {$set: talkUpdates})
+
+    return talkAttributes._id
+
+  # This method delete an existing talk
+  'talks/destroy': (talkAttributes) ->
+    userId = Meteor.userId()
+
+    if not userId
+      throw new Meteor.Error(401, 'Vous devez être identifié pour supprimer un talk.')
+
+    realTalk = Talks.findOne(talkAttributes._id)
+
+    if not realTalk
+      throw new Meteor.Error(404, "Le talk n'existe pas.")
+
+    if userId isnt realTalk.userId
+      throw new Meteor.Error(401, "Vous devez être le speaker du talk pour l'annuler.")
+
+    Talks.remove(talkAttributes._id)
+
+    return talkAttributes._id
+

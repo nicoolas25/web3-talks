@@ -1,7 +1,6 @@
-summary_size = 140
+summary_size = 75
 
 Template.talkItem.helpers
-  # The summary function extracts the begening of a talk's description
   summary: ->
     summary = @description.slice(0, summary_size)
     summary += '...' if @description.length > summary_size
@@ -12,3 +11,9 @@ Template.talkItem.helpers
 
   humanDate: ->
     moment(@createdAt).format('DD/MM/YYYY')
+
+  isOwner: ->
+    @userId is Meteor.userId()
+
+  votes: ->
+    0

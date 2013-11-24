@@ -1,6 +1,17 @@
 <template name="talkItem">
   <div class="talk">
     <h3>{{title}} <span class="speaker">par {{speaker}}, proposé le {{humanDate}} à {{humanTime}}</span></h3>
-    <div>{{summary}}</div>
+    <div>
+      <div class="actions">
+        {{#if isOwner}}
+          <span class="edit">
+            <a href="{{talksEditPath this}}">Modifier</a>
+          </span>
+           - 
+        {{/if}}
+        <a href="" title="Voter pour ce talk">{{votes}} vote(s)</a>
+      </div>
+      <div class="summary">{{summary}}</div>
+    </div>
   </div>
 </template>
