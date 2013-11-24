@@ -6,5 +6,9 @@
 standard-app-packages
 insecure
 preserve-inputs
-stylus
 coffeescript
+router
+accounts-github
+accounts-google
+accounts-ui-unstyled
+stylus

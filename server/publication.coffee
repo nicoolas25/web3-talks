@@ -1,1 +1,4 @@
-Meteor.publish 'talks', -> Talks.find()
+Meteor.publish 'talks', ->
+  Talks.find {},
+    fields:
+      public: false

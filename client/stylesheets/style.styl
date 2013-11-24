@@ -1,10 +1,68 @@
 text_color = #202020
+menu_color = #D0D0D0
+
+// Mixins
+
+container(bg_color)
+  border-radius 5px
+  padding 10px
+  background-color bg_color
+  box-shadow 0px 0px 5px rgba(0,0,0,60%)
+
+// Abstract classes to extend
+
+.inline-list
+  list-style-type none
+
+  li
+    display inline-block
+
+.menu-element
+  container lighten(invert(menu_color), 20%)
+  display block
+
+  text-decoration none
+  color menu_color
+  cursor pointer
+
 
 body
   color #202020
+  padding 10px
+
+nav
+  margin-bottom: 10px
+
+  ul
+    @extend .inline-list
+
+    li > a
+      @extend .menu-element
+
+    #login-sign-in-link, #login-name-link
+      @extend .menu-element
+
+    #login-dropdown-list
+      container white
+      position absolute
+      margin-top 5px
+
+      .login-button
+        cursor pointer
+        height 19px
+        margin 5px 0px
+
+        .login-image
+          float left
+          width 16px
+          height 16px
+
+        .text-besides-image
+          margin-left 5px
 
 div.talk
   h3
+    margin-top 15px
     margin-bottom 5px
 
     span.speaker
@@ -13,8 +71,29 @@ div.talk
       color: lighten(text_color, 50%)
 
   & > div
-    padding 10px
-    background: invert(text_color)
-    border-radius 5px
+    container invert(text_color)
 
+form
+  container invert(text_color)
+  max-width 500px
+
+  legend
+    font 120% bold
+    padding-bottom 10px
+
+  .field
+    margin-bottom 5px
+
+    label
+      display block
+    input, textarea
+      box-sizing border-box
+      width 100%
+    textarea
+      height 150px
+
+  .actions
+    margin-top: 5px
+    width 100%
+    text-align right
 

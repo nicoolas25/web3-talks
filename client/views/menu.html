@@ -1,0 +1,11 @@
+<template name="menu">
+  <ul>
+    <li><a href="{{talksPagePath}}">Liste des talks</a></li>
+    <li><a href="">Prochains rendez-vous</a></li>
+    <li>{{loginButtons}}</li>
+    {{#if currentUser}}
+    <li><a href="{{talksNewPath}}">Proposer un talk</a></li>
+    {{/if}}
+  </ul>
+</template>
+
