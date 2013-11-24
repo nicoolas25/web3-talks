@@ -13,7 +13,7 @@ Template.talkItem.helpers
     moment(@createdAt).format('DD/MM/YYYY')
 
   isOwner: ->
-    @userId is Meteor.userId()
+    ownDocument(Meteor.userId(), @)
 
   votes: ->
     0

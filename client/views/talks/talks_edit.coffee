@@ -7,29 +7,23 @@ Template.talksEdit.events
     event.preventDefault()
 
     if confirm("Voulez vous vraiment supprimer ce talk ?")
-      talk =
-        _id: Session.get('currentTalkId')
-
-      Meteor.call 'talks/destroy', talk, (error) ->
+      talkId = Session.get('currentTalkId')
+      Talks.remove talkId, (error) ->
         if error
-          Meteor.Router.to('talksEdit', talk)
-          alert error
-
-      Meteor.Router.to('talksPage')
+          alert(error.reason)
+        else
+          Meteor.Router.to('talksPage')
 
   'submit form': (event) ->
     event.preventDefault()
 
-    title_elt = -> document.getElementById('new-talk-title')
-    descr_elt = -> document.getElementById('new-talk-description')
+    talkId = Session.get('currentTalkId')
     talk =
-      _id:         Session.get('currentTalkId')
       title:       title_elt().value
       description: descr_elt().value
 
-    Meteor.call 'talks/patch', talk, (error, id) ->
+    Talks.update talkId, {$set: talk}, (error) ->
       if error
-        Meteor.Router.to('talksEdit', talk)
-        alert error
-
-    Meteor.Router.to('talksPage')
+        alert(error.reason)
+      else
+        Meteor.Router.to('talksPage')
