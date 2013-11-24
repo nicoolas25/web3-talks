@@ -1,6 +1,11 @@
 Meteor.Router.add
-  '/':           'talksPage'
-  '/talks/new':  'talksNew'
+  '/': 'talksPage'
+
+  '/talks/new': 'talksNew'
+
+  '/talks/:_id/edit':
+    to:  'talksEdit'
+    and: (id) -> Session.set('currentTalkId', id)
 
 Meteor.Router.filters
   'requireLogin': (page) ->
@@ -10,4 +15,4 @@ Meteor.Router.filters
       'accessDenied'
 
 Meteor.Router.filter 'requireLogin',
-  only: 'talksNew'
+  only: ['talksNew', 'talksEdit']

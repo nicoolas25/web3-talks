@@ -1,4 +1,2 @@
-Meteor.publish 'talks', ->
-  Talks.find {},
-    fields:
-      public: false
+# Publish to the clients every talks
+Meteor.publish 'talks', -> Talks.find()

@@ -4,8 +4,10 @@ Meteor.startup ->
       title: "Introduction à Meteor"
       speaker: "Nicolas Zermati"
       description: "Découvrez Meteor au travers de la réalisation du site de Web3."
+      createdAt: new Date().getTime()
 
     Talks.insert
       title: "Meteor en détails"
       speaker: "Nicolas Zermati"
       description: "Continuez à découvrir Meteor au travers de la réalisation du site de Web3."
+      createdAt: new Date().getTime()
