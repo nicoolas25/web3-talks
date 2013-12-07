@@ -1,13 +1,20 @@
 @Talks = new Meteor.Collection('talks')
 
-@Talks.allow
-  update: ownDocument
-  remove: ownDocument
-
 @Talks.deny
   update: (userId, talk, fieldNames) ->
+    # By pass this validation if the user is an admin
+    return false if isAdmin(userId)
+
     # Deny the update if there is other fields than title and description
     _.without(fieldNames, 'title', 'description').length > 0
+
+@Talks.allow
+  update: ownsDocument
+  remove: ownsDocument
+
+@Talks.allow
+  update: isAdmin
+  remove: isAdmin
 
 # All methods will run on server side and
 # will be simulated on client too.

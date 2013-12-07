@@ -3,8 +3,9 @@ Template.talksNew.events
     # Prevent the browser to submit the form
     event.preventDefault()
 
-    title_elt = -> document.getElementById('new-talk-title')
-    descr_elt = -> document.getElementById('new-talk-description')
+    titleElt = -> document.getElementById('new-talk-title')
+    descrElt = -> document.getElementById('new-talk-description')
+
     # Prepare the data contained in the form
     talk =
       title:       title_elt().value
@@ -17,8 +18,8 @@ Template.talksNew.events
         Meteor.Router.to('talksNew')
 
         # Refill the form with given values
-        title_elt().value = talk.title
-        descr_elt().value = talk.description
+        titleElt().value = talk.title
+        descrElt().value = talk.description
 
         # Display an alert with the error message
         alert error

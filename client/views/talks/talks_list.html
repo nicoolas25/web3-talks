@@ -1,7 +1,28 @@
 <template name="talksList">
-  <div class="talks">
-    {{#each talks}}
-      {{> talkItem}}
-    {{/each}}
-  </div>
+  {{#if candidateTalksPresent}}
+    <div class="candidate-talks talks">
+      <h1>Propositions de talks</h1>
+      {{#each candidateTalks}}
+        {{> talkItem}}
+      {{/each}}
+    </div>
+  {{/if}}
+
+  {{#if acceptedTalksPresent}}
+    <div class="accepted-talks talks">
+      <h1>Talks prévus pour le prochain rendez-vous</h1>
+      {{#each acceptedTalks}}
+        {{> talkItem}}
+      {{/each}}
+    </div>
+  {{/if}}
+
+  {{#if doneTalksPresent}}
+    <div class="done-talks talks">
+      <h1>Talks déjà donnés</h1>
+      {{#each doneTalks}}
+        {{> talkItem}}
+      {{/each}}
+    </div>
+  {{/if}}
 </template>
