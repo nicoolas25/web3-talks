@@ -8,8 +8,8 @@ Template.talksNew.events
 
     # Prepare the data contained in the form
     talk =
-      title:       title_elt().value
-      description: descr_elt().value
+      title:       titleElt().value
+      description: descrElt().value
 
     # Remote call to the server
     Meteor.call 'talks/create', talk, (error, id) ->

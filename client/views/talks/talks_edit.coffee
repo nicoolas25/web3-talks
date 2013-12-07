@@ -17,13 +17,10 @@ Template.talksEdit.events
   'submit form': (event) ->
     event.preventDefault()
 
-    titleElt = -> document.getElementById('edit-talk-title')
-    descrElt = -> document.getElementById('edit-talk-description')
-
     talkId = Session.get('currentTalkId')
     talk =
-      title:       titleElt().value
-      description: descrElt().value
+      title:       document.getElementById('edit-talk-title').value
+      description: document.getElementById('edit-talk-description').value
 
     Talks.update talkId, {$set: talk}, (error) ->
       if error

@@ -35,6 +35,7 @@ Meteor.methods
 
     # Add some attributes on server side
     talk =_ .extend talk,
+      status:    "candidate"
       userId:    user._id
       speaker:   user.profile.name
       createdAt: new Date().getTime()
