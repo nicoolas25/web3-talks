@@ -17,12 +17,15 @@ Template.talksNew.events
         # Go back to the talksNew view
         Meteor.Router.to('talksNew')
 
-        # Refill the form with given values
-        titleElt().value = talk.title
-        descrElt().value = talk.description
+        # Set a very small timer to let the browser construct the DOM
+        setTimeout ->
+          # Refill the form with given values
+          titleElt().value = talk.title
+          descrElt().value = talk.description
 
-        # Display an alert with the error message
-        alert error
+          # Display an alert with the error message
+          alert error.reason
+        , 100
 
     # Latency compensation
     Meteor.Router.to('talksPage')
