@@ -1,6 +1,6 @@
 # Web3-talks
 
-Cette application sert à rassambler et à voter les propositions de talks
+Cette application sert à rassembler et à voter les propositions de talks
 pour le meetup Web3. L'application sert également de support pour une
 présentation de [Meteor][meteor] à cette même rencontre.
 
