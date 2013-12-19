@@ -1,3 +1,4 @@
+@import url('http://fonts.googleapis.com/css?family=Roboto+Slab:700')
 primary_color = #BADA55
 
 // Mixins
@@ -18,14 +19,16 @@ container(bg_color)
     display inline-block
 
 .menu-element
+  display block
   padding 0.7em 1.2em
   background primary_color
   border 0
   box-shadow none
   color #fff
   font-size 1.1em
-  margin-right -0.1em
+  margin-right -0.5em
   text-shadow 0 1px 1px rgba(0,0,0,0.1)
+  text-decoration none
   border-radius 0
   transition all 0.05s
   &:focus, &:hover 
@@ -40,14 +43,24 @@ container(bg_color)
 
 body
   color #222
-  font-family "Roboto Slab","Trebuchet MS"
+  font-family "Trebuchet MS", "Helvetica", sans-serif
   font-size 14px
+  padding: 0.8em
   margin 1em auto
   max-width 1200px 
-
+h1,h2,h3
+  font-family "Roboto Slab","Trebuchet MS"
 h1 
   color primary_color
-    font-size 1.5em
+  font-size 1.5em
+  -webkit-font-smoothing antialiased
+  font-weight 700
+h3
+  color #444
+  font-weight 700
+  font-size 1.3em
+  padding-left 0.2em
+  margin 0.4em 0 0.4em
   -webkit-font-smoothing antialiased
 nav
   margin-bottom 10px
@@ -61,25 +74,23 @@ nav
   li:last-child a 
     border-radius 0 1.5em 1.5em 0
 
-  #login-dropdown-list
-    container white
-    position absolute
-    margin-top 5px
-    .login-button
-      cursor pointer
-      height 19px
-      margin 5px 0px
-    .login-image
-      float left
-      width 16px
-      height 16px
-    .text-besides-image
-        margin-left 5px
-    
-.accounts-dialog 
+#login-dropdown-list
+  container white
+  position absolute
+  margin-top 5px
   border 1px solid #ddd
   box-shadow 0 1px 1px rgba(0,0,0,0.3)
   padding 0.5em 1em
+  .login-button
+    cursor pointer
+    height 19px
+    margin 5px 0px
+  .login-image
+    float left
+    width 16px
+    height 16px
+  .text-besides-image
+      margin-left 5px
 
 .talks
   .talk
@@ -92,21 +103,17 @@ nav
       background none
       box-shadow none
       padding 0
-  h3
-    color #444
-    font-weight 700
-    font-size 1.3em
-    padding-left 0.2em
-    margin-top 0.4em
-    -webkit-font-smoothing antialiased
   .speaker 
     display block
     font-size 0.7em
     padding-top 0.3em
     font-weight normal
+    font-style italic
+    color #909090
   .vote
+    cursor: pointer
     float none
-    font-size 1.2em
+    font-size 0.9em
     padding 0.3em 0.6em 0.3em 2em
     border-radius 1em
     background primary_color
@@ -155,8 +162,6 @@ nav
 
 
 form
-  container invert(text_color)
-
   legend
     font 120% bold
     padding-bottom 10px
