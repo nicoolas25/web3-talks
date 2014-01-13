@@ -1,15 +1,23 @@
+titleElt = -> document.getElementById('new-talk-title')
+kindElt  = -> document.getElementById('new-talk-kind')
+descrElt = -> document.getElementById('new-talk-description')
+
+Template.talksNew.helpers
+  talkKind: -> Session.get('talkKind')
+
 Template.talksNew.events
+  'change select#new-talk-kind': (event) ->
+    Session.set('talkKind', kindElt().value)
+
   'submit form': (event) ->
     # Prevent the browser to submit the form
     event.preventDefault()
-
-    titleElt = -> document.getElementById('new-talk-title')
-    descrElt = -> document.getElementById('new-talk-description')
 
     # Prepare the data contained in the form
     talk =
       title:       titleElt().value
       description: descrElt().value
+      kind:        kindElt().value
 
     # Remote call to the server
     Meteor.call 'talks/create', talk, (error, id) ->
@@ -21,6 +29,7 @@ Template.talksNew.events
         setTimeout ->
           # Refill the form with given values
           titleElt().value = talk.title
+          kindElt().value  = talk.kind
           descrElt().value = talk.description
 
           # Display an alert with the error message

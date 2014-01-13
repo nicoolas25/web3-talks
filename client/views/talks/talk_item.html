@@ -1,7 +1,7 @@
 <template name="talkItem">
   <div class="talk">
     <h3>{{title}} <span class="speaker">par {{speaker}}, proposé le {{humanDate}} à {{humanTime}}</span></h3>
-    <div>
+    <div class="{{kind}}">
       <div class="actions">
         {{#if isAdmin}}
           <a class="change-status" data-talk-id="{{this._id}}" data-new-status="{{prevStatus}}">&uarr;</a>

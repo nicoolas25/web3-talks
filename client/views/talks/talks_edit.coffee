@@ -2,7 +2,17 @@ Template.talksEdit.helpers
   talk: ->
     Talks.findOne(Session.get('currentTalkId'))
 
+  kindIsTech:    -> @kind is 'tech'
+  kindIsNonTech: -> @kind is 'non-tech'
+
 Template.talksEdit.events
+  'change select#edit-talk-kind': (event) ->
+    select = event.target
+    $(select).closest('form')
+      .toggleClass(@kind)
+      .toggleClass(select.value)
+    @kind = select.value
+
   'click input.delete': (event) ->
     event.preventDefault()
 
@@ -20,6 +30,7 @@ Template.talksEdit.events
     talkId = Session.get('currentTalkId')
     talk =
       title:       document.getElementById('edit-talk-title').value
+      kind:        document.getElementById('edit-talk-kind').value
       description: document.getElementById('edit-talk-description').value
 
     Talks.update talkId, {$set: talk}, (error) ->

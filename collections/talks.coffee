@@ -1,12 +1,17 @@
 @Talks = new Meteor.Collection('talks')
 
 @Talks.deny
-  update: (userId, talk, fieldNames) ->
+  update: (userId, talk, fieldNames, command) ->
     # By pass this validation if the user is an admin
     return false if isAdmin(userId)
 
     # Deny the update if there is other fields than title and description
-    _.without(fieldNames, 'title', 'description').length > 0
+    return true if _.without(fieldNames, 'title', 'description', 'kind').length > 0
+
+    # Allow only two kinds of talk
+    return true if _.indexOf(['tech', 'non-tech'], command.$set.kind) is -1
+
+    false
 
 @Talks.allow
   update: ownsDocument
@@ -31,7 +36,7 @@ Meteor.methods
       throw new Meteor.Error(422, 'Vous devez donner un titre à votre talk.')
 
     # Filter only the permitted attributes
-    talk = _.pick(talkAttributes, 'title', 'description')
+    talk = _.pick(talkAttributes, 'title', 'description', 'kind')
 
     # Add some attributes on server side
     talk =_ .extend talk,

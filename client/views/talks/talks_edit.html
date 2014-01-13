@@ -1,10 +1,17 @@
 <template name="talksEdit">
   {{#with talk}}
-    <form>
+    <form class="{{kind}}">
       <legend>Modifier le talk</legend>
       <div class="field">
         <label>Speaker</label>
         <input type="text" value="{{currentUser.profile.name}}" disabled/>
+      </div>
+      <div class="field">
+        <label for="edit-talk-kind">Type de talk</label>
+        <select id="edit-talk-kind">
+          <option value="tech" {{#if kindIsTech}}selected="selected"{{/if}}>Technique</option>
+          <option value="non-tech" {{#if kindIsNonTech}}selected="selected"{{/if}}>Non-technique</option>
+        </select>
       </div>
       <div class="field">
         <label for="edit-talk-title">Titre</label>

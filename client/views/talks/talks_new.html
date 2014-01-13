@@ -1,9 +1,16 @@
 <template name="talksNew">
-  <form>
+  <form class="{{talkKind}}">
     <legend>Nouveau talk</legend>
     <div class="field">
       <label>Speaker</label>
       <input type="text" value="{{currentUser.profile.name}}" disabled/>
+    </div>
+    <div class="field">
+      <label for="new-talk-kind">Type de talk</label>
+      <select id="new-talk-kind">
+        <option value="tech">Technique</option>
+        <option value="non-tech">Non-technique</option>
+      </select>
     </div>
     <div class="field">
       <label for="new-talk-title">Titre</label>

@@ -1,5 +1,7 @@
-text_color = #202020
-menu_color = #D0D0D0
+text_color     = #202020
+i_text_color   = invert(text_color)
+non_tech_color = rgb(red(i_text_color), green(i_text_color) + 30, blue(i_text_color))
+menu_color     = #D0D0D0
 
 // Mixins
 
@@ -83,7 +85,10 @@ div.talks
         color: lighten(text_color, 50%)
 
     & > div
-      container invert(text_color)
+      &.tech
+        container i_text_color
+      &.non-tech
+        container non_tech_color
 
       .actions
         white-space nowrap
@@ -107,7 +112,10 @@ div.talks
           -webkit-user-select none
 
 form
-  container invert(text_color)
+  &.tech
+    container i_text_color
+  &.non-tech
+    container non_tech_color
 
   legend
     font 120% bold
@@ -118,7 +126,7 @@ form
 
     label
       display block
-    input, textarea
+    input, textarea, select
       box-sizing border-box
       width 100%
     textarea

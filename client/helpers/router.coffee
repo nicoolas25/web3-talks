@@ -1,7 +1,9 @@
 Meteor.Router.add
   '/': 'talksPage'
 
-  '/talks/new': 'talksNew'
+  '/talks/new':
+    to: 'talksNew'
+    and: -> Session.set('talkKind', 'tech')
 
   '/talks/:_id/edit':
     to:  'talksEdit'
