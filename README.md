@@ -1,5 +1,7 @@
 # Web3-talks
 
+<a href="http://twitter.com/nicoolas25"><img src="http://www.pairprogramwith.me/assets/badge.svg" style="height:40px" title="We can pair on this!" /></a>
+
 Cette application sert à rassembler et à voter les propositions de talks
 pour le meetup Web3. L'application sert également de support pour une
 présentation de [Meteor][meteor] à cette même rencontre.
